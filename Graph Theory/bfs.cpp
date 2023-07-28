@@ -14,7 +14,7 @@ void bfs(int p, int adj[][1000],int visited[],int len[])
         int f=q.front();
         q.pop();
         
-        for(auto i:adj[p])
+        for(auto i:adj[f])
         {
             if(!visited[i])
             {
