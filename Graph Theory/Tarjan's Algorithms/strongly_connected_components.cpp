@@ -5,7 +5,7 @@ using namespace std;
 
 #define UNVISITED -1
 
-class tarjan_algorithm
+class SCC
 {
 private:
     int id;
@@ -18,10 +18,43 @@ private:
     vector<vector<int>> adj;
     vector<vector<int>> sccs;
 
+    void dfs(int at)
+    {
+        st.push(at);
+        onStack[at] = true;
+        ids[at] = lows[at] = ++id;
+
+        for (auto to : adj[at])
+        {
+            if (ids[to] == UNVISITED)
+            {
+                dfs(to);
+            }
+            if (onStack[to])
+            {
+                lows[at] = min(lows[at], lows[to]);
+            }
+        }
+
+        if (ids[at] == lows[at])
+        {
+            int node = -1;
+            while (node != at)
+            {
+                node = st.top();
+                st.pop();
+                onStack[node] = false;
+                lows[node] = ids[at];
+                sccs[sccCount].push_back(node);
+            }
+            sccCount++;
+        }
+    }
+
 public:
     int nodeN;
 
-    tarjan_algorithm(int n)
+    SCC(int n)
     {
         nodeN = n;
         int id = -1;
@@ -58,39 +91,6 @@ public:
         }
     }
 
-    void dfs(int at)
-    {
-        st.push(at);
-        onStack[at] = true;
-        ids[at] = lows[at] = ++id;
-
-        for (auto to : adj[at])
-        {
-            if (ids[to] == UNVISITED)
-            {
-                dfs(to);
-            }
-            if (onStack[to])
-            {
-                lows[at] = min(lows[at], lows[to]);
-            }
-        }
-
-        if (ids[at] == lows[at])
-        {
-            int node = -1;
-            while (node != at)
-            {
-                node = st.top();
-                st.pop();
-                onStack[node] = false;
-                lows[node] = ids[at];
-                sccs[sccCount].push_back(node);
-            }
-            sccCount++;
-        }
-    }
-
     void printSCC()
     {
         for (int i = 0; i < sccCount; i++)
@@ -113,11 +113,11 @@ int main()
     adj[0].push_back(3);
     adj[3].push_back(4);
 
-    tarjan_algorithm tg = tarjan_algorithm(5);
+    SCC tg = SCC(5);
 
     tg.findSCC(adj);
 
-    cout<<tg.getSccCount()<<endl;
+    cout << tg.getSccCount() << endl;
 
     tg.printSCC();
 }
