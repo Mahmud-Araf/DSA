@@ -1,1 +1,0 @@
-while (!st.empty()) st.pop();
