@@ -1,4 +1,4 @@
-// implementation of dsu using array and union by rank
+// implementation of dsu using array and union by size
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -8,14 +8,14 @@ class DSU
 private:
     int n;       // total node number
     int *parent; // for storing root
-    int *rank;   // for storing height
+    int *size;   // for storing node number
 
 public:
     DSU(int n)
     {
         this->n = n;
         parent = new int[n + 1];
-        rank = new int[n + 1];
+        size = new int[n + 1];
 
         makeset();
     }
@@ -25,7 +25,7 @@ public:
         for (int i = 1; i <= n; i++)
         {
             parent[i] = i;
-            rank[i] = 0;
+            size[i] = 1;
         }
     }
 
@@ -39,6 +39,8 @@ public:
         return parent[x];
     }
 
+    
+
     void _union(int x, int y)
     {
         int rootX = find(x);
@@ -46,14 +48,12 @@ public:
 
         if (rootX != rootY)
         {
-            if (rank[rootX] < rank[rootY])
+            if (size[rootX] < size[rootY])
                 swap(rootX, rootY);
             parent[rootY] = rootX;
-            if (rank[rootX] == rank[rootY])
-                rank[rootX]++;
+            size[rootX] += size[rootY];
         }
     }
-
 };
 
 int main()

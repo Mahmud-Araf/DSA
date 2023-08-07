@@ -1,4 +1,4 @@
-// implementation of dsu using linked list and union by rank
+// implementation of dsu using linked list and union by size
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -8,20 +8,20 @@ class Node
 public:
     int value;
     Node *parent;
-    int rank;
+    int size;
 
     Node()
     {
         value = INT_MIN;
         parent = NULL;
-        rank = 0;
+        size = 1;
     }
 
     Node(int value)
     {
         this->value = value;
         parent = this;
-        rank = 0;
+        size = 1;
     }
 };
 
@@ -67,17 +67,14 @@ public:
 
         if (rootX != rootY)
         {
-            if (rootX->rank < rootY->rank)
+            if (rootX->size < rootY->size)
             {
                 swap(rootX, rootY);
             }
 
             rootY->parent = rootX;
 
-            if (rootX->rank == rootY->rank)
-            {
-                rootX->rank++;
-            }
+            rootX->size += rootY->size;
         }
     }
 };
