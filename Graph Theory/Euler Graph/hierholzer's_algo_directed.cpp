@@ -1,4 +1,4 @@
-// implementation of euler path/circuit using hierholzer's algorithm
+// implementation of euler path/circuit using hierholzer's algorithm for directed graphs
 
 #include <bits/stdc++.h>
 using namespace std;
