@@ -22,14 +22,25 @@ private:
 
     bool isEulerian()
     {
+        int count =0;
+
         for (int i = 0; i < n; i++)
         {
             if (degree[i] % 2 != 0)
             {
-                return false;
+                count++;
             }
         }
-        return true;
+        
+        if(count==0 || count==2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
     }
 
     void dfs(int at)
