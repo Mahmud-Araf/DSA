@@ -2,7 +2,6 @@
 using namespace std;
 
 
-
 void dijkstra(vector<vector<pair<int, int>>> &v,vector<int>&dist,int n, int source)
 {
     vector<int> visited(n + 1, 0);
