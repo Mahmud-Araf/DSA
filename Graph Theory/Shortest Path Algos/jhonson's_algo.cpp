@@ -10,7 +10,7 @@ vector<int> bellmanFord(vector<vector<pair<int, int>>> &graph, int n) {
     h[n] = 0;
 
     for (int i = 1; i <= n ; ++i) {
-        for (int vi = 1; vi <= n; ++vi) {
+        for (int vi = 0; vi <= n; ++vi) {
             for (auto child : graph[vi]) {
                 int child_v = child.first;
                 int wt = child.second;
@@ -21,7 +21,7 @@ vector<int> bellmanFord(vector<vector<pair<int, int>>> &graph, int n) {
         }
     }
 
-    for (int vi = 1; vi <= n; ++vi) {
+    for (int vi = 0; vi <= n; ++vi) {
         for (auto child : graph[vi]) {
             int child_v = child.first;
             int wt = child.second;
