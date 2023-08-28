@@ -48,10 +48,11 @@ int main()
         }
     }
 
-    graph[0][1] = 5;
-    graph[0][3] = 10;
-    graph[1][2] = 3;
-    graph[2][3] = 1;
+   graph[0][1] = -5;
+   graph[0][2] = 2;
+   graph[0][3] = 3;
+   graph[1][2] = 4;
+   graph[2][3] = 1;
 
     floydWarshall(graph, 4);
 

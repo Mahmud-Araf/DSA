@@ -135,9 +135,10 @@ int main() {
         }
     }
 
-    matrix[0][1] = 5;
-    matrix[0][3] = 10;
-    matrix[1][2] = 3;
+    matrix[0][1] = -5;
+    matrix[0][2] = 2;
+    matrix[0][3] = 3;
+    matrix[1][2] = 4;
     matrix[2][3] = 1;
 
 
