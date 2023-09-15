@@ -43,6 +43,25 @@ private:
         
     }
 
+    int firstNode()
+    {
+        int start = 0;
+
+        for(int i=0;i<n;i++)
+        {
+           if(degree[i]%2==1)
+           {
+             return i;
+           }
+           else if(degree[i]>0)
+           {
+            start = i;
+           }
+        }
+
+        return start;
+    }
+
     void dfs(int at)
     {
         while (!adj[at].empty())
@@ -82,7 +101,8 @@ public:
             return;
         }
 
-        dfs(0);
+        
+        dfs(firstNode());
 
         if (path.size() == m + 1)
         {

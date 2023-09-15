@@ -110,7 +110,7 @@ void johnson(vector<vector<pair<int, int>>> &graph,int n)
         }
     }
 
-    vector<vector<int>>shortest(n);
+    vector<vector<int>>shortest(n,vector<int>(n));
 
     for(int source=0;source<n;source++)
     {
