@@ -5,11 +5,15 @@ using namespace std;
 
 int lis(vector<int>&arr, int n)
 {
-    int dp[n];
+    vector<int>dp(n),parent(n);
+
     for(int i = 0; i < n; i++)
     {
         dp[i] = 1; 
+        parent[i]=-1;
     }
+
+
 
     for(int i = 1; i < n; i++)
     {
@@ -18,11 +22,37 @@ int lis(vector<int>&arr, int n)
             if(arr[i] > arr[j] && dp[i] < dp[j] + 1)
             {
                 dp[i] = dp[j] + 1;
+                parent[i]=j;
             }
         }
     }
 
-    return *max_element(dp, dp + n);
+    int it = max_element(dp.begin(), dp.end())- dp.begin();
+
+    int max = dp[it];
+    
+    vector<int>ans;
+
+    while(it!=-1)
+    {
+        ans.push_back(arr[it]);
+
+        it = parent[it];
+
+    }
+
+    reverse(ans.begin(),ans.end());
+
+    for(auto i:ans)
+    {
+        cout<<i<<" ";
+    }
+
+    cout<<endl;
+
+    return max;
+
+
 }
 
 int main()
