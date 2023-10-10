@@ -26,29 +26,7 @@ int knapsack(int Weight, vector<int>& wt, vector<int>& profit, int n)
             }
         }
     }
-
-
-    int maxProfit = dp[n][Weight];
-    int remainingWeight = Weight;
-    vector<int> selectedItems;
-
-    for (i = n; i > 0 && maxProfit > 0; i--)
-    {
-        if (maxProfit != dp[i - 1][remainingWeight])
-        {
-            selectedItems.push_back(i - 1);
-            maxProfit -= profit[i - 1];
-            remainingWeight -= wt[i - 1];
-        }
-    }
-
-    cout << "Selected items: ";
-    for (i = selectedItems.size() - 1; i >= 0; i--)
-    {
-        cout << selectedItems[i] << " ";
-    }
-    cout << endl;
-
+    
     return dp[n][Weight];
 }
 
