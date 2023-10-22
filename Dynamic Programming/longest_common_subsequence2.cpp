@@ -35,11 +35,9 @@ int lcs(string s1,string s2,int m, int n)
         }
         else{
             if(dp[i][j+1]>dp[i+1][j]){
-                // ans.push_back(s1[i-1]);
                 i--;
             }
             else{
-            //    ans.push_back(s2[j-1]);
                 j--; 
             }
         }
