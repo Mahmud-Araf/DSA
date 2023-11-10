@@ -19,7 +19,7 @@ bool bfs(vector<vector<int>> &residual, int s, int t, vector<int> &parent)
 
         for (int v = 0; v < n; v++)
         {
-            if (visited[v] == false && residual[u][v] && u!=t)
+            if (visited[v] == false && residual[u][v])
             {
                 q.push(v);
                 parent[v] = u;
