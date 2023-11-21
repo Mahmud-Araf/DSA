@@ -116,6 +116,17 @@ void johnson(vector<vector<pair<int, int>>> &graph,int n)
     {
         shortest[source]=dijkstra(graph,n,source);
     }
+
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(shortest[i][j]!=INT_MAX)
+            {
+                shortest[i][j]=shortest[i][j]+h[j]-h[i];
+            }
+        }
+    }
     
     printSolution(shortest,n);
 }
