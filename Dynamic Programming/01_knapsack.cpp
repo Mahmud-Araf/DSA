@@ -32,10 +32,10 @@ int knapsack(int Weight, vector<int>& wt, vector<int>& profit, int n)
 
 int main()
 {
-    vector<int> profit = {60, 100, 120};
-    vector<int> wt = {10, 20, 30};
-    int Weight = 50;
-    int n = 3;
+    vector<int> profit = {2, 3, 1, 4};
+    vector<int> wt = {3,4,6,5};
+    int Weight = 8;
+    int n = 4;
 
     int maxProfit = knapsack(Weight, wt, profit, n);
     cout << "Maximum profit: " << maxProfit << endl;
